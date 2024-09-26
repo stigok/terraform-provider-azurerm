@@ -59,7 +59,7 @@ resource "azurerm_federated_identity_credential" "myworkload_identity" {
   parent_id           = azurerm_user_assigned_identity.myworkload_identity.id
   audience            = ["api://AzureADTokenExchange"]
   issuer              = azurerm_kubernetes_cluster.mycluster.oidc_issuer_url
-  subject             = "system:serviceaccount:${workload_sa_namespace}:${workload_sa_name}"
+  subject             = "system:serviceaccount:${var.workload_sa_namespace}:${var.workload_sa_name}"
 }
 
 data "azurerm_role_definition" "contributor" {
